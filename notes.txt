@@ -1,0 +1,16 @@
+UDEMY REACT PROJECT 1 NOTES
+
+DEFINITIONS:
+
+REACT: A javascript library for building user interfaces (developed by Facebook, made available to the public for free)
+COMPONENTS: 
+-All user interfaces are made up of COMPONENTS
+-COMPONENTS are reuseable 
+-COMPONENTS should be simple, do small tasks
+    -Don't have components do too much 
+-DEF: A COMPONENT is an independent and reusable bit of code 
+-As I understand, it is the building blocks of React. The documents within a code that contain the functiosn which are then assembled together. 
+
+REACT uses a DECLARATIVE approach. "Define the desired target state, and let REACT figure out the sctual JS DOM instructions" 
+
+REACT code is just fancy JS code

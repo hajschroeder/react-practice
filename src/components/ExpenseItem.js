@@ -1,19 +1,20 @@
 import ExpenseDate from './ExpenseDate';
+import Card from './Card';
 import './ExpenseItem.css';
 
-function ExpenseItem (props) {
+function ExpenseItem(props) {
   return (
-    <div className="expense-item"> 
-      <ExpenseDate date={props.date}/>
+    <Card className='expense-item'>
+      <ExpenseDate date={props.date} />
       <div className='expense-item__description'>
         <h2>{props.title}</h2>
-        <div className='expense-item__price'>{props.amount}</div>
+        <div className='expense-item__price'>${props.amount}</div>
       </div>
-    </div>
+    </Card>
   );
 }
 
-export default ExpenseItem
+export default ExpenseItem;
 // The Following got moved to it's own component ExpenseDate
   // const month =  props.date.toLocaleString('en-us', { month: 'long' })
   // const day = props.date.toLocaleString('en-us', { day: '2-digit' })

@@ -1,4 +1,4 @@
-import React from 'react';
+import { React, useState } from 'react';
 import ExpenseDate from './ExpenseDate';
 import Card from '../UI/Card';
 import './ExpenseItem.css';
@@ -7,15 +7,28 @@ import './ExpenseItem.css';
 // declare a function. In this case it takes the 'props' attribute because we will be using those within this component
 function ExpenseItem(props) {
 // the below function is declared within the function itself as a constant, and can now be accessed by the return statement. 
-  const ringMyBell = () => {console.log(`Lucky Number ${Math.floor(Math.random()*5000)}`)}
+// Typically this would be named something like clickHandler, it is good practice to end the name of an event handler with the word 'Handler'. But I'm having fun soooo whatever
+
+// useState is a built in react HOOK. It is used to change data within a React App. If you have data that might change and that change should be reflected within the App, you need useState 
+const [stateTitle, setStateTitle] = useState(props.expenseTitle);
+// The following was written as a test. It worked as desired.   
+// const [stateAmount, setStateAmount] = useState(props.expenseAmount);
+const ringMyBell = () => {
+  setStateTitle('Updated stateTitle');
+  // setStateAmount('$new Amount')
+    console.log(`Lucky Number ${Math.floor(Math.random()*5000)}`)
+    console.log(stateTitle)
+    // console.log(stateAmount)
+  };
   return (
     <Card className='expense-item'>
      {/* This is our first use of props. It is grabbing the .expenseDate as defined in Expenses.js */}
       <ExpenseDate date={props.expenseDate} />
       <div className='expense-item__description'>
         {/* Also taking the title prop from Expenses.js */}
-        <h2>{props.expenseTitle}</h2>
+        <h2>{stateTitle}</h2>
         {/* amount prop from Expense.js */}
+        {/* <div className='expense-item__price'>${stateAmount}</div> */}
         <div className='expense-item__price'>${props.expenseAmount}</div>
       </div>
       <button onClick={ringMyBell}>{`Click #${props.expenseId} for heaven`}</button>

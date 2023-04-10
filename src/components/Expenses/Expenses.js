@@ -1,3 +1,4 @@
+import React from 'react';
 import ExpenseItem from './ExpenseItem';
 import Card from '../UI/Card';
 import './Expenses.css';
@@ -6,24 +7,31 @@ function Expenses(props) {
   return (
     <Card className="expenses">
       <ExpenseItem
-        title={props.items[0].title}
-        amount={props.items[0].amount}
-        date={props.items[0].date}
+        expenseTitle={props.itemsDef[0].title}
+        expenseAmount={props.itemsDef[0].amount}
+        expenseDate={props.itemsDef[0].date}
+        expenseId={props.itemsDef[0].itemNumber}
       />
       <ExpenseItem
-        title={props.items[1].title}
-        amount={props.items[1].amount}
-        date={props.items[1].date}
+        expenseTitle={props.itemsDef[1].title}
+        expenseAmount={props.itemsDef[1].amount}
+        expenseDate={props.itemsDef[1].date}
+        expenseId={props.itemsDef[1].itemNumber}
+
       />
       <ExpenseItem
-        title={props.items[2].title}
-        amount={props.items[2].amount}
-        date={props.items[2].date}
+        expenseTitle={props.itemsDef[2].title}
+        expenseAmount={props.itemsDef[2].amount}
+        expenseDate={props.itemsDef[2].date}
+        expenseId={props.itemsDef[2].itemNumber}
+
       />
       <ExpenseItem
-        title={props.items[3].title}
-        amount={props.items[3].amount}
-        date={props.items[3].date}
+        expenseTitle={props.itemsDef[3].title}
+        expenseAmount={props.itemsDef[3].amount}
+        expenseDate={props.itemsDef[3].date}
+        expenseId={props.itemsDef[3].itemNumber}
+
       />
     </Card>
   );

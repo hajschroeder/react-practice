@@ -6,6 +6,8 @@ import './ExpenseItem.css';
 // It could be helpful the think of the components (in this case) as passing their skeleton up the tree, but then the tree is passing the fruit back down...Idunno, I feel high. 
 // declare a function. In this case it takes the 'props' attribute because we will be using those within this component
 function ExpenseItem(props) {
+// the below function is declared within the function itself as a constant, and can now be accessed by the return statement. 
+  const ringMyBell = () => {console.log(`Lucky Number ${Math.floor(Math.random()*5000)}`)}
   return (
     <Card className='expense-item'>
      {/* This is our first use of props. It is grabbing the .expenseDate as defined in Expenses.js */}
@@ -16,7 +18,7 @@ function ExpenseItem(props) {
         {/* amount prop from Expense.js */}
         <div className='expense-item__price'>${props.expenseAmount}</div>
       </div>
-      <button onClick>{`Click #${props.expenseId} for heaven`}</button>
+      <button onClick={ringMyBell}>{`Click #${props.expenseId} for heaven`}</button>
     </Card>
   );
 }

@@ -10,25 +10,26 @@ function ExpenseItem(props) {
 // Typically this would be named something like clickHandler, it is good practice to end the name of an event handler with the word 'Handler'. But I'm having fun soooo whatever
 
 // useState is a built in react HOOK. It is used to change data within a React App. If you have data that might change and that change should be reflected within the App, you need useState 
+// Using State is simple. Register state with useState. It returns two values, the value itself and the updating function. We call the updating function whenever the state should change. and we then use that state element to output in the JSX. As written below, stateTitle is the value element, setStateTitle is the updating function, and useState targets props.expenseTitle as the value to change. 
 const [stateTitle, setStateTitle] = useState(props.expenseTitle);
-// The following was written as a test. It worked as desired.   
-// const [stateAmount, setStateAmount] = useState(props.expenseAmount);
+// The following was written as a TEST. It worked as desired.   
+// TEST const [stateAmount, setStateAmount] = useState(props.expenseAmount);
 const ringMyBell = () => {
   setStateTitle('Updated stateTitle');
-  // setStateAmount('$new Amount')
+  // TEST setStateAmount('$new Amount')
     console.log(`Lucky Number ${Math.floor(Math.random()*5000)}`)
     console.log(stateTitle)
-    // console.log(stateAmount)
+    // TEST console.log(stateAmount)
   };
   return (
     <Card className='expense-item'>
      {/* This is our first use of props. It is grabbing the .expenseDate as defined in Expenses.js */}
       <ExpenseDate date={props.expenseDate} />
       <div className='expense-item__description'>
-        {/* Also taking the title prop from Expenses.js */}
+        {/* Unlike the JSX elements above where the data is passed through props from Expenses.js, this following grabs the element from the useState hook we implemented */}
         <h2>{stateTitle}</h2>
+        {/* TEST <div className='expense-item__price'>${stateAmount}</div> */}
         {/* amount prop from Expense.js */}
-        {/* <div className='expense-item__price'>${stateAmount}</div> */}
         <div className='expense-item__price'>${props.expenseAmount}</div>
       </div>
       <button onClick={ringMyBell}>{`Click #${props.expenseId} for heaven`}</button>

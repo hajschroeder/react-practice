@@ -20,9 +20,17 @@ const ExpenseForm = () => {
   //   setEnteredTitle(titleEvent.target.value);
   // }
   const titleChangeHandler = (event) => {
-    setUserInput({
-      ...userInput,
-      enteredTitle: event.target.value
+    // The following was the inital function for updating state in this current method of one state for many elements, but it is not best practice
+    // setUserInput({
+    //   ...userInput,
+    //   enteredTitle: event.target.value
+    // })
+    //Best Practice Version: 
+    setUserInput((prevState) => {
+      return { ...prevState, enteredTitle: event.target.value}
+    //the parameter within setUserInput can be anything, because the function knows to be looking at the state of the object
+    // setUserInput((blooblaaState) => {
+    //   return { ...blooblaaState, enteredTitle: event.target.value}
     })
   }
   const amountChangeHandler = (event) => {

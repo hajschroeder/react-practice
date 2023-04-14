@@ -16,7 +16,15 @@ function Expenses(props) {
 
     <Card className="expenses">
       <ExpensesFilter shownYear={filteredYear} onChangeFilter={yearChangeHandler} />
-      <ExpenseItem
+        {props.itemsDef.map((expenseElement) =>
+          (<ExpenseItem 
+            expenseTitle={expenseElement.title} 
+            expenseAmount={expenseElement.amount} 
+            expenseDate={expenseElement.date}
+          />))}
+
+        {/* The following was how the code was written before branch 12. We had a block of HTML/JSX for each expense item. Ie, we hardcoded the amount of expenses, which were drilled into the hard coded expenses array within App. (In the near future we will be gathering this data via databases and APIs, but for now it is hardcoded) */}
+        {/* <ExpenseItem
         expenseTitle={props.itemsDef[0].title}
         expenseAmount={props.itemsDef[0].amount}
         expenseDate={props.itemsDef[0].date}
@@ -42,7 +50,7 @@ function Expenses(props) {
         expenseDate={props.itemsDef[3].date}
         expenseId={props.itemsDef[3].itemNumber}
 
-      />
+      /> */}
     </Card>
   </div>
   );

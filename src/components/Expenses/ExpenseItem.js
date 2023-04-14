@@ -11,28 +11,30 @@ function ExpenseItem(props) {
 
 // useState is a built in react HOOK. It is used to change data within a React App. If you have data that might change and that change should be reflected within the App, you need useState 
 // Using State is simple. Register state with useState. It returns two values, the value itself and the updating function. We call the updating function whenever the state should change. and we then use that state element to output in the JSX. As written below, stateTitle is the value element, setStateTitle is the updating function, and useState targets props.expenseTitle as the value to change. 
-const [stateTitle, setStateTitle] = useState(props.expenseTitle);
+// const [stateTitle, setStateTitle] = useState(props.expenseTitle);
 // The following was written as a TEST. It worked as desired.   
 // TEST const [stateAmount, setStateAmount] = useState(props.expenseAmount);
-const ringMyBell = () => {
-  setStateTitle('Updated stateTitle');
-  // TEST setStateAmount('$new Amount')
-    console.log(`Lucky Number ${Math.floor(Math.random()*5000)}`)
-    console.log(stateTitle)
-    // TEST console.log(stateAmount)
-  };
+// The following was written for demonstation purposes. ringMyBell is called using onClick within the button at the bottom of the Card component. With that removed, this whole component is now considered 'stateless'. The useState declaration above is now commented out as well  
+// const ringMyBell = () => {
+//   setStateTitle('Updated stateTitle');
+//   // TEST setStateAmount('$new Amount')
+//     console.log(`Lucky Number ${Math.floor(Math.random()*5000)}`)
+//     console.log(stateTitle)
+//     // TEST console.log(stateAmount)
+//   };
   return (
     <Card className='expense-item'>
      {/* This is our first use of props. It is grabbing the .expenseDate as defined in Expenses.js */}
       <ExpenseDate date={props.expenseDate} />
       <div className='expense-item__description'>
         {/* Unlike the JSX elements above where the data is passed through props from Expenses.js, this following grabs the element from the useState hook we implemented */}
-        <h2>{stateTitle}</h2>
+        {/* <h2>{stateTitle}</h2> */}
+        <h2>{props.expenseTitle}</h2>
         {/* TEST <div className='expense-item__price'>${stateAmount}</div> */}
         {/* amount prop from Expense.js */}
         <div className='expense-item__price'>${props.expenseAmount}</div>
       </div>
-      <button onClick={ringMyBell}>{`Click #${props.expenseId} for heaven`}</button>
+      {/* DEMONSTATION PURPOSES <button onClick={ringMyBell}>{`Click #${props.expenseId} for heaven`}</button> */}
     </Card>
   );
 }

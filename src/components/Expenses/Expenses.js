@@ -3,6 +3,7 @@ import Card from '../UI/Card';
 import './Expenses.css';
 import ExpensesFilter from './ExpensesFilter';
 import ExpensesList from './ExpensesList';
+import ExpensesChart from './ExpensesChart';
 
 function Expenses(props) {
   const [filteredYear, setFilteredYear] = useState('Show All')
@@ -35,6 +36,7 @@ function Expenses(props) {
         shownYear={filteredYear} 
         onChangeFilter={yearChangeHandler} 
       />
+      <ExpensesChart expenses={filteredExpenses}/>
       <ExpensesList itemsDef={filteredExpenses}/>
       {/* {expensesContent} */}
       {/* Everything below was moved above the JSX portion of the component to be within the component function, keeping the JSX as lean as possible */}

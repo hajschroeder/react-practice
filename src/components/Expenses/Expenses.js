@@ -1,20 +1,32 @@
 import React, { useState } from 'react';
-import ExpenseItem from './ExpenseItem';
 import Card from '../UI/Card';
 import './Expenses.css';
 import ExpensesFilter from './ExpensesFilter';
+import ExpensesList from './ExpensesList';
 
 function Expenses(props) {
-  const [filteredYear, setFilteredYear] = useState('2021')
+  const [filteredYear, setFilteredYear] = useState('Show All')
   const yearChangeHandler = (selectedYear) => {
-    console.log('Expenses.js')
-    console.log(selectedYear)
     setFilteredYear(selectedYear)
   }
 
   const filteredExpenses = props.itemsDef.filter(expenseElement => {
     return expenseElement.date.getFullYear().toString() === filteredYear;
   });
+//  THE FOLLOWING WAS MOVED TO ExpensesList.js
+  // let expensesContent = <p>None Found</p>;
+
+  // if(filteredExpenses.length > 0) {
+  //   expensesContent = filteredExpenses.map((expenseElement) => (
+  //     <ExpenseItem
+  //       key={expenseElement.itemNumber}
+  //       expenseTitle={expenseElement.title} 
+  //       expenseAmount={expenseElement.amount} 
+  //       expenseDate={expenseElement.date}
+  //     />
+      
+  //   ))
+  // }
   return (
     <div>
 
@@ -23,14 +35,19 @@ function Expenses(props) {
         shownYear={filteredYear} 
         onChangeFilter={yearChangeHandler} 
       />
+      <ExpensesList itemsDef={filteredExpenses}/>
+      {/* {expensesContent} */}
+      {/* Everything below was moved above the JSX portion of the component to be within the component function, keeping the JSX as lean as possible */}
         {/* {props.itemsDef.map((expenseElement) => */}
-        {filteredExpenses.map((expenseElement) =>
+        {/* {filteredExpenses.length === 0 && <p>None Found</p>}
+        {filteredExpenses.length > 0 && (
+        filteredExpenses.map((expenseElement) =>
           (<ExpenseItem
             key={expenseElement.itemNumber}
             expenseTitle={expenseElement.title} 
             expenseAmount={expenseElement.amount} 
             expenseDate={expenseElement.date}
-          />))}
+          />)))} */}
 
         {/* The following was how the code was written before branch 12. We had a block of HTML/JSX for each expense item. Ie, we hardcoded the amount of expenses, which were drilled into the hard coded expenses array within App. (In the near future we will be gathering this data via databases and APIs, but for now it is hardcoded) */}
         {/* <ExpenseItem

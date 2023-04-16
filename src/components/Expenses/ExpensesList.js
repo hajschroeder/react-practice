@@ -13,10 +13,10 @@ const ExpensesList = (props) => {
         expenseTitle={expenseElement.title} 
         expenseAmount={expenseElement.amount} 
         expenseDate={expenseElement.date}
-      />
-      
-    ))}
+        />
+        
+        ))}
   </ul>
-}
+}   
 
 export default ExpensesList

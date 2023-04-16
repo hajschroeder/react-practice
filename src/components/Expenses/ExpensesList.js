@@ -5,7 +5,7 @@ const ExpensesList = (props) => {
 
   if(props.itemsDef.length ===0) {
     return <h2 className="expneses-list__fallback">Found None</h2>
-  }
+  } 
   return <ul className="expenses-list">
     {props.itemsDef.map((expenseElement) => (
       <ExpenseItem

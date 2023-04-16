@@ -6,12 +6,19 @@ import ExpensesList from './ExpensesList';
 import ExpensesChart from './ExpensesChart';
 
 function Expenses(props) {
-  const [filteredYear, setFilteredYear] = useState('Show All')
+  const allExpenses=(props.itemsDef)
+  const [filteredYear, setFilteredYear] = useState('all-expenses')
   const yearChangeHandler = (selectedYear) => {
     setFilteredYear(selectedYear)
+    console.log(selectedYear)
   }
-
-  const filteredExpenses = props.itemsDef.filter(expenseElement => {
+  console.log(allExpenses)
+  const filteredExpenses = allExpenses.filter(expenseElement => {
+    //Okay, this took me way to long to figure out. I wanted to have the ability to remove the filter and show all expenses. I couldn't figure out how and where to point to this. Eventually, this was the solution I landed on. 
+    //The if statement below was not initially there. The function as defined above just dove straight into the return statement on line 22. I tweaked it slightly by having the function first check the value of the state. If the value was equal to 'all-expenses' as defined within ExpensesFilter.js then it returns the constant allExpenses, which I defined above as props.itemsDef. 
+    if (filteredYear === 'all-expenses') {
+      return allExpenses
+    } else 
     return expenseElement.date.getFullYear().toString() === filteredYear;
   });
 //  THE FOLLOWING WAS MOVED TO ExpensesList.js
@@ -28,6 +35,7 @@ function Expenses(props) {
       
   //   ))
   // }
+  console.log(filteredExpenses)
   return (
     <div>
 
